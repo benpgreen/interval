@@ -1,4 +1,4 @@
-def _validate_init_inputs(a, b, left_open, right_open):
+def _validate_init_inputs(a, b, left_closed, right_closed):
     pass
 
 
