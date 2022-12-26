@@ -40,10 +40,17 @@ class Interval:
                         interval1.right_closed or interval2.right_closed
                     )
 
+                if interval1.a == interval2.a:
+                    left_closed = (
+                        interval1.left_closed or interval2.left_closed
+                    )
+                else:
+                    left_closed = interval1.left_closed
+
                 combined_interval = SimpleInterval(
                     interval1.a,
                     b,
-                    left_closed=interval1.left_closed,
+                    left_closed=left_closed,
                     right_closed=right_closed,
                 )
                 self.intervals[idx : idx + 2] = [combined_interval]
