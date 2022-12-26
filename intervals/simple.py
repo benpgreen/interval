@@ -1,4 +1,4 @@
-from validation import _validate_init_inputs, _check_is_number
+from .validation import _validate_init_inputs, _check_is_number
 
 
 class SimpleInterval:

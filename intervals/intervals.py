@@ -1,4 +1,4 @@
-from simple import SimpleInterval
+from .simple import SimpleInterval
 
 
 def _interval_from_list(intervals):
