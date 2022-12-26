@@ -1,6 +1,6 @@
 from .simple import SimpleInterval, EmptySet
 
-from itertools import Product
+from itertools import product
 
 
 def _interval_from_list(intervals):
@@ -67,7 +67,7 @@ class Interval:
         if other.is_empty_set:
             return EmptySet()
         intervals = []
-        for interval1, interval2 in Product(self.intervals, other.intervals):
+        for interval1, interval2 in product(self.intervals, other.intervals):
             intersection = interval1 & interval2
             if not intersection.is_empty_set:
                 intervals.append(intersection)
