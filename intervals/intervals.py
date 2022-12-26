@@ -65,14 +65,14 @@ class Interval:
 
     def __and__(self, other):
         if other.is_empty_set:
-            return EmptySet
+            return EmptySet()
         intervals = []
         for interval1, interval2 in Product(self.intervals, other.intervals):
             intersection = interval1 & interval2
             if not intersection.is_empty_set:
                 intervals.append(intersection)
         if len(intervals) == 0:
-            return EmptySet
+            return EmptySet()
         else:
             return _interval_from_list(intervals)
 
