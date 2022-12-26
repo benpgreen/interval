@@ -1,4 +1,6 @@
-from .simple import SimpleInterval
+from .simple import SimpleInterval, EmptySet
+
+from itertools import Product
 
 
 def _interval_from_list(intervals):
@@ -15,6 +17,7 @@ class Interval:
                 a, b, left_closed=left_closed, right_closed=right_closed
             )
         ]
+        self.is_empty_set = False
 
     def _simplify(self):
         self.intervals = sorted(self.intervals, key=lambda x: (x.a, x.b))
@@ -61,7 +64,17 @@ class Interval:
         return _interval_from_list(self.intervals + other.intervals)
 
     def __and__(self, other):
-        pass
+        if other.is_empty_set:
+            return EmptySet
+        intervals = []
+        for interval1, interval2 in Product(self.intervals, other.intervals):
+            intersection = interval1 & interval2
+            if not intersection.is_empty_set:
+                intervals.append(intersection)
+        if len(intervals) == 0:
+            return EmptySet
+        else:
+            return _interval_from_list(intervals)
 
     def size(self):
         return sum([interval.size() for interval in self.intervals])
