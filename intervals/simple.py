@@ -99,6 +99,10 @@ class EmptySet:
         _check_is_number(number)
         return EmptySet()
 
+    def __or__(self, other):
+        # should add validation here
+        return other
+
     def __and__(self, other):
         return EmptySet()
 
