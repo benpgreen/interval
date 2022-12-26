@@ -60,6 +60,9 @@ class Interval:
     def __or__(self, other):
         return _interval_from_list(self.intervals + other.intervals)
 
+    def __and__(self, other):
+        pass
+
     def size(self):
         return sum([interval.size() for interval in self.intervals])
 
