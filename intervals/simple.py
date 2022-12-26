@@ -39,6 +39,9 @@ class SimpleInterval:
             right_closed=self.right_closed,
         )
 
+    def __and__(self, other):
+        pass
+
     def __repr__(self):
         left_brace = "[" if self.left_closed else "("
         right_brace = "]" if self.right_closed else ")"
