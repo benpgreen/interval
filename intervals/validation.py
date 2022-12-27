@@ -26,3 +26,8 @@ def _check_is_number(*numbers):
             raise TypeError(
                 f"{number} should be an int or a float, is a {type(number)}"
             )
+
+
+def _check_is_interval(class_to_check):
+    if not hasattr(class_to_check, "is_empty_set"):
+        raise TypeError(f"{class_to_check} does not appear to be an Interval.")
