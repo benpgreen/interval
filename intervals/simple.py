@@ -1,4 +1,8 @@
-from .validation import _validate_init_inputs, _check_is_number
+from .validation import (
+    _validate_init_inputs,
+    _check_is_number,
+    _check_is_interval,
+)
 
 
 class SimpleInterval:
@@ -100,10 +104,11 @@ class EmptySet:
         return EmptySet()
 
     def __or__(self, other):
-        # should add validation here
+        _check_is_interval(other)
         return other
 
     def __and__(self, other):
+        _check_is_interval(other)
         return EmptySet()
 
     def __repr__(self):
